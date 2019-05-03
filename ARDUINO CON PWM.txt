@@ -1,0 +1,30 @@
+int pinBoton=5;
+int estadoBoton=0;
+int intensidad=0;
+
+void setup ()
+{
+  pinMode (pinBoton, INPUT);
+  pinMode (10, OUTPUT);
+  Serial.begin(9600);
+}
+
+  void loop ()
+{
+  estadoBoton = digitalRead (pinBoton);
+  
+  if (estadoBoton == HIGH)
+  {
+      for (intensidad; intensidad < 256; intensidad++)
+      {
+        analogWrite (10,intensidad);
+        delay (10);
+      }
+
+      
+      Serial.println ("Pulsado");
+        digitalWrite(10, HIGH); 
+  }
+    delay (50);
+    
+}
